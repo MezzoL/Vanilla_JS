@@ -117,3 +117,12 @@ canvas {
 .time-slot {
     min-height: 50px;
 }
+
+:root {
+    --bg-light-primary: #d4e2ff;
+    --bg-light-secondary: #e9ecef;
+    --bg-light-success: #c3e6cb;
+    --bg-light-danger: #f5c6cb;
+    --bg-light-warning: #ffeeba;
+    --bg-light-info: #bee5eb;
+}

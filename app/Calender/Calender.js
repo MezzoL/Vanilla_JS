@@ -2,7 +2,7 @@ import Application from "../Application.js";
 
 export default class TimetableWithButtons extends Application {
     static days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    static periods = 6;
+    static periods = 7;
 
     /**
      * @type {HTMLElement}
@@ -28,7 +28,7 @@ export default class TimetableWithButtons extends Application {
             { label: 'TV', color: 'btn-danger' },
             { label: 'Friends', color: 'btn-warning' },
             { label: 'Work', color: 'btn-info' },
-            { label: 'Deselect All', color: 'btn-dark' }
+            { label: 'Deselect', color: 'btn-dark' }
         ];
 
         buttonNames.forEach(buttonData => {
@@ -41,7 +41,8 @@ export default class TimetableWithButtons extends Application {
                 if (this.lastClickedTimeSlot !== null) {
                     if (this.selectedColor !== null) {
                         const lightColor = this.selectedColor.replace('btn', 'bg-light');
-                        this.lastClickedTimeSlot.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue(`--${lightColor}`);
+                        const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue(`--${lightColor}`).trim();
+                        this.lastClickedTimeSlot.style.backgroundColor = backgroundColor;
                     } else {
                         this.lastClickedTimeSlot.style.backgroundColor = '';
                     }
@@ -49,6 +50,7 @@ export default class TimetableWithButtons extends Application {
             });
             buttonGroupElem.appendChild(buttonElem);
         });
+        
 
         this.target.appendChild(buttonGroupElem);
     }
@@ -69,13 +71,13 @@ export default class TimetableWithButtons extends Application {
     }
 
     initTimeSlots() {
-        for (let i = 0; i <= TimetableWithButtons.days.length * (TimetableWithButtons.periods + 1); ++i) {
+        for (let i = 0; i < (TimetableWithButtons.days.length + 1) * (TimetableWithButtons.periods + 1) ; ++i) {
             const day = i % (TimetableWithButtons.days.length + 1);
             const period = Math.floor(i / (TimetableWithButtons.days.length + 1));
-
+    
             const wrapperElem = document.createElement('div');
             wrapperElem.className = 'time-slot-wrapper';
-
+    
             if (day === 0 && period === 0) {
                 // Top-left corner (timetable label)
                 const timetableLabel = document.createElement('div');
@@ -105,5 +107,9 @@ export default class TimetableWithButtons extends Application {
             }
             this.gridElem.appendChild(wrapperElem);
         }
+    
+        // Adjust the grid to include the correct number of rows
+        this.gridElem.style.gridTemplateRows = `repeat(${TimetableWithButtons.periods + 3}, 1fr)`;
     }
+    
 }
