@@ -36,7 +36,7 @@ export default class TimetableWithButtons extends Application {
             buttonElem.type = 'button';
             buttonElem.textContent = buttonData.label;
             buttonElem.addEventListener('click', () => {
-                this.selectedColor = buttonElem.classList.contains('btn-dark') ? null : buttonData.color;
+                this.selectedColor = console.log("amogus"); //buttonElem.classList.contains('btn-dark') ? null : buttonData.color ;
             });
             buttonGroupElem.appendChild(buttonElem);
         });
