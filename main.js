@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Success branch
                     const appObject = appModule.default;
                     application = new appObject({
-                        statBarTarget: document.getElementById('status'),
                         target: target
                     });
                 }, function(err) {

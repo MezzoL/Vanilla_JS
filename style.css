@@ -1,5 +1,11 @@
 :root {
     --border-color: rgb(185, 185, 185);
+    --bg-light-primary: #94c1ff;
+    --bg-light-secondary: #d1d0d0;
+    --bg-light-success: #7ce294;
+    --bg-light-danger: #f6abb2;
+    --bg-light-warning: #eaeb86;
+    --bg-light-info: #b0f4ff;
 }
 
 html, body {
@@ -45,84 +51,51 @@ body {
     width: 80%;
 }
 
-/* Picture matching app */
-.picture-matching-container {
-    width: 100%;
-}
+/* Calender app */
 
-.picture-matching-ghost {
-    width: 100%;
-    padding-bottom: 100%;
+.timetable-container {
     position: relative;
 }
 
-.picture-matching-grid {
-    position: absolute;
+.btn-group {
+    position: fixed;
     top: 0;
-    left: 0;
-    display: grid;
-    width: 100%;
-    height: 100%;
-    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
 }
 
-.picture-matching-feedback {
-    width: 100%;
-    height: 1.5rem;
-}
-
-.picture-matching-grid .card {
-    background-size: contain;
-    background-position: center;
-}
-
-.picture-matching-grid .card.unflipped {
-    background-color: gray;
-    border: 1px solid black;
-    box-sizing: border-box;
-    background-image: unset !important;
-}
-
-canvas {
-    width: 100%;
-    height: 100%;
-}
-
-/*Calender App*/
-
-.timetable-container {
-    display: inline-block;
-    border-collapse: collapse;
-}
-
-.timetable-grid {
-    display: grid;
-    border-collapse: collapse;
-}
-
-.day-label,
-.period-label,
-.time-slot {
-    border: 1px solid #000;
-    padding: 8px;
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+    width: 100px;
+    height: 100px;
     text-align: center;
+    vertical-align: middle;
 }
 
-.day-label,
-.period-label {
-    font-weight: bold;
-    background-color: #f1f1f1;
+.time-input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
-.time-slot {
-    min-height: 50px;
+input[type="time"] {
+    width: 100%;
+    padding-top: 5rem;
 }
 
-:root {
-    --bg-light-primary: #d4e2ff;
-    --bg-light-secondary: #e9ecef;
-    --bg-light-success: #c3e6cb;
-    --bg-light-danger: #f5c6cb;
-    --bg-light-warning: #ffeeba;
-    --bg-light-info: #bee5eb;
+.table {
+  border-collapse: collapse;
 }
+
+.table th, .table td {
+  border: 3px solid black;
+}
+
+.table tr > :first-child {
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+  }
